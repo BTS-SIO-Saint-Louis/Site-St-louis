@@ -9,11 +9,11 @@
     --secondary-color: #e5540e;
     --secondary-dark: #b9450a;
     --secondary-light: #fa7330;
-    
+
     /* Couleurs des spécialités */
     --slam-color: #9398b7;
     --sisr-color: #fa7330;
-    
+
     /* Couleurs neutres */
     --dark: #1e293b;
     --dark-light: #334155;
@@ -21,17 +21,17 @@
     --gray-light: #cbd5e1;
     --gray-lighter: #f1f5f9;
     --white: #ffffff;
-    
+
     /* Couleurs d'état */
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
     --info: #3b82f6;
-    
+
     /* Typographie */
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Open Sans', sans-serif;
-    
+
     /* Espacements */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -39,28 +39,28 @@
     --spacing-lg: 3rem;
     --spacing-xl: 4rem;
     --spacing-xxl: 6rem;
-    
+
     /* Tailles de conteneur */
     --container-width: 1200px;
     --container-padding: 2rem;
-    
+
     /* Bordures */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
-    
+
     /* Ombres */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
     --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
     --transition-slow: 0.5s ease;
-    
+
     /* Z-index */
     --z-dropdown: 1000;
     --z-sticky: 1020;
@@ -100,7 +100,12 @@ body {
 /* ============================================
    TYPOGRAPHIE
    ============================================ */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-primary);
     font-weight: 700;
     line-height: 1.2;
@@ -776,7 +781,7 @@ nav.scrolled {
 
 .horaire-item {
     padding: 1.5rem;
-    background-color: var(--gray-lighter);
+    background-color: var(--primary-light);
     border-radius: var(--radius-md);
     text-align: center;
 }
@@ -858,6 +863,16 @@ nav.scrolled {
 }
 
 .salary {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.fiche_onisep>a {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     background-color: var(--secondary-color);
@@ -1338,6 +1353,7 @@ nav.scrolled {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1345,21 +1361,31 @@ nav.scrolled {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0) translateX(-50%);
     }
+
     40% {
         transform: translateY(-10px) translateX(-50%);
     }
+
     60% {
         transform: translateY(-5px) translateX(-50%);
     }
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
@@ -1374,11 +1400,11 @@ nav.scrolled {
         --spacing-xl: 3rem;
         --spacing-xxl: 4rem;
     }
-    
+
     .nav-toggle {
         display: flex;
     }
-    
+
     .nav-links {
         position: fixed;
         top: 70px;
@@ -1391,61 +1417,61 @@ nav.scrolled {
         transition: left var(--transition-base);
         gap: 1rem;
     }
-    
+
     .nav-links.active {
         left: 0;
     }
-    
+
     .hero-cta {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .hero-cta .btn {
         width: 100%;
         max-width: 300px;
     }
-    
+
     .presentation-content {
         grid-template-columns: 1fr;
     }
-    
+
     .presentation-image {
         order: -1;
     }
-    
+
     .key-points {
         grid-template-columns: 1fr;
     }
-    
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .specialites-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .modules-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .horaires-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .debouches-columns {
         grid-template-columns: 1fr;
     }
-    
+
     .poursuites-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .contact-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1462,68 +1488,68 @@ nav.scrolled {
         --spacing-xl: 2.5rem;
         --spacing-xxl: 3rem;
     }
-    
+
     .logo-text {
         font-size: 1.25rem;
     }
-    
+
     .logo-img {
         height: 40px;
     }
-    
+
     .section-title::after {
         width: 40px;
         height: 3px;
     }
-    
+
     .hero {
         min-height: calc(100vh - 70px);
     }
-    
+
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.25rem;
     }
-    
+
     .stats-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .stat-number {
         font-size: 3rem;
     }
-    
+
     .horaires-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .secteurs-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .contact-form {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
     }
-    
+
     .scroll-top-btn {
         width: 45px;
         height: 45px;
         bottom: 1rem;
         right: 1rem;
     }
-    
+
     .notification {
         max-width: calc(100% - 2rem);
         right: -100%;
     }
-    
+
     .notification.show {
         right: 1rem;
     }
@@ -1533,6 +1559,7 @@ nav.scrolled {
    IMPRESSION
    ============================================ */
 @media print {
+
     nav,
     .hero-scroll-indicator,
     .scroll-top-btn,
@@ -1540,12 +1567,12 @@ nav.scrolled {
     .contact-form {
         display: none;
     }
-    
+
     .hero {
         min-height: auto;
         padding: 2rem 0;
     }
-    
+
     .section {
         page-break-inside: avoid;
     }
@@ -1555,6 +1582,7 @@ nav.scrolled {
    ACCESSIBILITÉ
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
