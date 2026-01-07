@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS SIO - Lycée Saint-Louis Châteaulin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-left h1 .bts {
+            color: #ff6600;
+        }
+
+        .header-left h2 {
+            font-size: 1.3rem;
+            font-weight: normal;
+            border-top: 3px solid #ff6600;
+            padding-top: 0.5rem;
+        }
+
+        .header-right img {
+            width: 180px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #002244;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: #ff6600;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Intro Section */
+        .intro {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .intro-image {
+            flex: 0 0 200px;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border: 3px solid white;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text p {
+            font-size: 1.2rem;
+        }
+
+        .badge {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #8B4513;
+            color: white;
+            padding: 1.5rem;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Section Title */
+        .section-title {
+            background: #ff6600;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 3rem 0 2rem;
+            display: inline-block;
+        }
+
+        /* Tronc Commun */
+        .tronc-commun {
+            background: #f5f5f5;
+            padding: 3rem 0;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .module-card {
+            background: #003366;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .module-card h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            text-align: center;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 0.5rem;
+        }
+
+        .module-card ul {
+            list-style: none;
+        }
+
+        .module-card li {
+            padding: 0.3rem 0;
+        }
+
+        .module-card li:before {
+            content: "▸ ";
+            color: #ff6600;
+            font-weight: bold;
+        }
+
+        /* Spécialités */
+        .specialites {
+            padding: 3rem 0;
+        }
+
+        .specialites-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .specialite {
+            padding: 2rem;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .sisr {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+        }
+
+        .slam {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+        }
+
+        .specialite h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ff6600;
+        }
+
+        .specialite p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .tech-icons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-icons i {
+            font-size: 3rem;
+        }
+
+        /* Débouchés */
+        .debouches {
+            background: #f5f5f5;
+            padding: 3rem 0;
+        }
+
+        .debouches-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .debouche-column h4 {
+            color: #ff6600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .debouche-column ul {
+            list-style: none;
+            border-left: 3px solid #003366;
+            padding-left: 1.5rem;
+        }
+
+        .debouche-column li {
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Poursuites */
+        .poursuites {
+            padding: 3rem 0;
+        }
+
+        .poursuites-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .poursuite-card {
+            background: white;
+            padding: 2rem;
+            border-left: 5px solid #003366;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .poursuite-card h4 {
+            color: #003366;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .poursuite-card ul {
+            list-style: none;
+            border-left: 3px solid #ccc;
+            padding-left: 1rem;
+        }
+
+        .poursuite-card li {
+            padding: 0.5rem 0;
+        }
+
+        /* Stages */
+        .stages {
+            background: #003366;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .stages-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stage-item {
+            background: #ff6600;
+            padding: 2rem 3rem;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-width: 300px;
+        }
+
+        /* Stats */
+        .stats {
+            background: #ff6600;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .stats h3 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #003366 0%, #002244 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item strong {
+            color: #ff6600;
+        }
+
+        .lycee-info {
+            background: white;
+            color: #003366;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .lycee-info h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lycee-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .feature {
+            background: #ff6600;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #002244;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-left h1 {
+                font-size: 2.5rem;
+            }
+
+            .specialites-container,
+            .debouches-grid,
+            .poursuites-grid,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .intro-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1><span class="bts">BTS</span> SIO</h1>
+                    <h2>SERVICE INFORMATIQUE AUX ORGANISATIONS</h2>
+                </div>
+                <div class="header-right">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ESAiNT%3C/text%3E%3Ctext x='10' y='70' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ELOUiS%3C/text%3E%3Ctext x='10' y='95' font-family='Arial' font-size='16' fill='%23003366'%3ECHÂTEAULIN%3C/text%3E%3Ccircle cx='95' cy='35' r='3' fill='%23ff6600'/%3E%3Ccircle cx='65' cy='65' r='3' fill='%23ff6600'/%3E%3C/svg%3E" alt="Saint-Louis Châteaulin">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#presentation">Présentation</a></li>
+            <li><a href="#tronc-commun">Tronc Commun</a></li>
+            <li><a href="#specialites">Spécialités</a></li>
+            <li><a href="#debouches">Débouchés</a></li>
+            <li><a href="#poursuites">Poursuites d'études</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="presentation" class="intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23003366' width='200' height='200'/%3E%3Crect fill='%23004080' y='50' width='200' height='40'/%3E%3Crect fill='%23005090' y='100' width='200' height='40'/%3E%3Crect fill='%230060a0' y='150' width='200' height='40'/%3E%3C/svg%3E" alt="Bâtiment">
+                </div>
+                <div class="intro-text">
+                    <h3>Le BTS SIO forme en 2 ans des techniciens professionnels aux métiers du <strong>développement</strong>, du <strong>réseau</strong> et de la <strong>cybersécurité</strong>.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tronc Commun -->
+    <section id="tronc-commun" class="tronc-commun">
+        <div class="container">
+            <div class="section-title">UN TRONC COMMUN</div>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">Au premier semestre les étudiants découvrent les matières informatiques via un tronc commun :</p>
+            
+            <div class="modules-grid">
+                <div class="module-card">
+                    <h4>Algorithmie</h4>
+                    <ul>
+                        <li>Conception</li>
+                        <li>Fondamentaux</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>Base de données</h4>
+                    <ul>
+                        <li>Conception</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>Système</h4>
+                    <ul>
+                        <li>Linux</li>
+                        <li>Powershell</li>
+                        <li>Serveurs</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>Web</h4>
+                    <ul>
+                        <li>HTML - CSS</li>
+                        <li>PHP</li>
+                        <li>Javascript</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>Cybersécurité</h4>
+                    <ul>
+                        <li>Hack mot de passe</li>
+                        <li>Phishing</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>Anglais</h4>
+                    <ul>
+                        <li>Séjour en Angleterre</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>Réseau</h4>
+                    <ul>
+                        <li>Conception</li>
+                        <li>Sécurisation</li>
+                        <li>Application</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>Droit - Éco Management</h4>
+                    <ul>
+                        <li>Découverte des entreprises</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; font-size: 1.3rem; font-weight: bold; color: #003366;">
+                ⬇️ Les étudiants se spécialisent au second semestre ⬇️
+            </div>
+        </div>
+    </section>
+
+    <!-- Spécialités -->
+    <section id="specialites" class="specialites">
+        <div class="container">
+            <div class="specialites-container">
+                <!-- SISR -->
+                <div class="specialite sisr">
+                    <h3>SPÉCIALITÉ - SISR</h3>
+                    <p>Solution d'Infrastructure, Système et Réseaux pour devenir un expert dans l'administration, la sécurisation et l'optimisation des infrastructures informatiques</p>
+                    <div class="tech-icons">
+                        <span style="color: #ff6600; font-size: 2rem;">🔧 CISCO</span>
+                        <span style="color: #ff6600; font-size: 2rem;">💻 Windows</span>
+                        <span style="color: #ff6600; font-size: 2rem;">🌐 Réseaux</span>
+                    </div>
+                </div>
+
+                <!-- SLAM -->
+                <div class="specialite slam">
+                    <h3>SPÉCIALITÉ - SLAM</h3>
+                    <p>Solutions Logicielles et Applications Métiers pour devenir un développeur capable de concevoir des applications web/mobile, bases de données et logiciels.</p>
+                    <div class="tech-icons">
+                        <span style="color: #ff6600; font-size: 2rem;">📱 Android</span>
+                        <span style="color: #ff6600; font-size: 2rem;">🐘 PHP</span>
+                        <span style="color: #ff6600; font-size: 2rem;">☕ Java</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Débouchés -->
+    <section id="debouches" class="debouches">
+        <div class="container">
+            <div class="section-title">UNE FORMATION D'AVENIR</div>
+            
+            <div class="debouches-grid">
+                <div class="debouche-column">
+                    <h4>Pour les SLAM</h4>
+                    <ul>
+                        <li>Analyste programmeur</li>
+                        <li>Développeur web / logiciel / application</li>
+                        <li>Chef de projet</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+
+                <div class="debouche-column">
+                    <h4>Pour les SISR</h4>
+                    <ul>
+                        <li>Administrateur système, réseau et sécurité</li>
+                        <li>Technicien support informatique</li>
+                        <li>Hackeur éthique</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poursuites d'études -->
+    <section id="poursuites" class="poursuites">
+        <div class="container">
+            <div class="section-title">ET APRÈS LE BTS ?</div>
+            
+            <div class="poursuites-grid">
+                <div class="poursuite-card">
+                    <h4>BAC +3</h4>
+                    <ul>
+                        <li>Licences professionnelles</li>
+                        <li>Licences informatiques (intégration en L3)</li>
+                    </ul>
+                </div>
+
+                <div class="poursuite-card">
+                    <h4>BAC +5</h4>
+                    <ul>
+                        <li>Master informatique / réseaux / cybersécurité</li>
+                        <li>Écoles d'ingénieurs (intégration en 1ère année)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stages -->
+    <section class="stages">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">STAGES EN ENTREPRISE</h2>
+            <div class="stages-info">
+                <div class="stage-item">4 SEMAINES DE STAGE EN 1ÈRE ANNÉE</div>
+                <div class="stage-item">6 SEMAINES DE STAGE EN 2ÈME ANNÉE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <h3>80%</h3>
+            <p>DES ÉTUDIANTS CONTINUENT LES ÉTUDES</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>NOUS CONTACTER</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>📞 Téléphone :</strong><br>
+                            02 98 86 59 00
+                        </div>
+                        <div class="contact-item">
+                            <strong>🌐 Site web :</strong><br>
+                            saint-louis29.net/nos-formations/
+                        </div>
+                        <div class="contact-item">
+                            <strong>📍 Adresse :</strong><br>
+                            Lycée Saint-Louis<br>
+                            Châteaulin, Finistère (29)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lycee-info">
+                    <h4>LE LYCÉE SAINT-LOUIS</h4>
+                    <div class="lycee-features">
+                        <div class="feature">Effectifs réduits</div>
+                        <div class="feature">Un internat</div>
+                        <div class="feature">Suivi scolaire individualisé</div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ESAiNT%3C/text%3E%3Ctext x='10' y='70' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ELOUiS%3C/text%3E%3Ctext x='10' y='95' font-family='Arial' font-size='16' fill='%23003366'%3ECHÂTEAULIN%3C/text%3E%3Ccircle cx='95' cy='35' r='3' fill='%23ff6600'/%3E%3Ccircle cx='65' cy='65' r='3' fill='%23ff6600'/%3E%3C/svg%3E" alt="Saint-Louis" style="width: 200px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 BTS SIO - Lycée Saint-Louis Châteaulin. Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">BTS Contrôlé par l'État</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.module-card, .specialite, .poursuite-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
