@@ -1,773 +1,844 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="BTS SIO - Services Informatiques aux Organisations au Lycée Saint-Louis de Châteaulin. Formation en développement et infrastructure réseau.">
+    <meta name="keywords" content="BTS SIO, SLAM, SISR, informatique, développement, réseau, Châteaulin">
+    <meta name="author" content="Lycée Saint-Louis Châteaulin">
+
     <title>BTS SIO - Lycée Saint-Louis Châteaulin</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #003366 0%, #004080 100%);
-            color: white;
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header-left h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .header-left h1 .bts {
-            color: #ff6600;
-        }
-
-        .header-left h2 {
-            font-size: 1.3rem;
-            font-weight: normal;
-            border-top: 3px solid #ff6600;
-            padding-top: 0.5rem;
-        }
-
-        .header-right img {
-            width: 180px;
-        }
-
-        /* Navigation */
-        nav {
-            background: #002244;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            display: block;
-            transition: background 0.3s;
-        }
-
-        nav a:hover {
-            background: #ff6600;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Intro Section */
-        .intro {
-            background: linear-gradient(135deg, #003366 0%, #004080 100%);
-            color: white;
-            padding: 3rem 0;
-        }
-
-        .intro-content {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .intro-image {
-            flex: 0 0 200px;
-        }
-
-        .intro-image img {
-            width: 100%;
-            border: 3px solid white;
-        }
-
-        .intro-text {
-            flex: 1;
-        }
-
-        .intro-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .intro-text p {
-            font-size: 1.2rem;
-        }
-
-        .badge {
-            position: absolute;
-            right: 50px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #8B4513;
-            color: white;
-            padding: 1.5rem;
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* Section Title */
-        .section-title {
-            background: #ff6600;
-            color: white;
-            padding: 1rem 1.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 3rem 0 2rem;
-            display: inline-block;
-        }
-
-        /* Tronc Commun */
-        .tronc-commun {
-            background: #f5f5f5;
-            padding: 3rem 0;
-        }
-
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .module-card {
-            background: #003366;
-            color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .module-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .module-card h4 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            text-align: center;
-            border-bottom: 2px solid #ff6600;
-            padding-bottom: 0.5rem;
-        }
-
-        .module-card ul {
-            list-style: none;
-        }
-
-        .module-card li {
-            padding: 0.3rem 0;
-        }
-
-        .module-card li:before {
-            content: "▸ ";
-            color: #ff6600;
-            font-weight: bold;
-        }
-
-        /* Spécialités */
-        .specialites {
-            padding: 3rem 0;
-        }
-
-        .specialites-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .specialite {
-            padding: 2rem;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .sisr {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            color: #333;
-        }
-
-        .slam {
-            background: linear-gradient(135deg, #003366 0%, #004080 100%);
-        }
-
-        .specialite h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #ff6600;
-        }
-
-        .specialite p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .tech-icons {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tech-icons i {
-            font-size: 3rem;
-        }
-
-        /* Débouchés */
-        .debouches {
-            background: #f5f5f5;
-            padding: 3rem 0;
-        }
-
-        .debouches-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .debouche-column h4 {
-            color: #ff6600;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .debouche-column ul {
-            list-style: none;
-            border-left: 3px solid #003366;
-            padding-left: 1.5rem;
-        }
-
-        .debouche-column li {
-            padding: 0.5rem 0;
-            font-size: 1.1rem;
-        }
-
-        /* Poursuites */
-        .poursuites {
-            padding: 3rem 0;
-        }
-
-        .poursuites-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .poursuite-card {
-            background: white;
-            padding: 2rem;
-            border-left: 5px solid #003366;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .poursuite-card h4 {
-            color: #003366;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .poursuite-card ul {
-            list-style: none;
-            border-left: 3px solid #ccc;
-            padding-left: 1rem;
-        }
-
-        .poursuite-card li {
-            padding: 0.5rem 0;
-        }
-
-        /* Stages */
-        .stages {
-            background: #003366;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .stages-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stage-item {
-            background: #ff6600;
-            padding: 2rem 3rem;
-            border-radius: 10px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            min-width: 300px;
-        }
-
-        /* Stats */
-        .stats {
-            background: #ff6600;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .stats h3 {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-        }
-
-        .stats p {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        /* Contact */
-        .contact {
-            background: linear-gradient(135deg, #003366 0%, #002244 100%);
-            color: white;
-            padding: 3rem 0;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 5px;
-            font-size: 1.2rem;
-        }
-
-        .contact-item strong {
-            color: #ff6600;
-        }
-
-        .lycee-info {
-            background: white;
-            color: #003366;
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .lycee-info h4 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .lycee-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .feature {
-            background: #ff6600;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: #002244;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .header-left h1 {
-                font-size: 2.5rem;
-            }
-
-            .specialites-container,
-            .debouches-grid,
-            .poursuites-grid,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .modules-grid {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .intro-content {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
+
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
+    <nav id="main-nav">
         <div class="container">
-            <div class="header-content">
-                <div class="header-left">
-                    <h1><span class="bts">BTS</span> SIO</h1>
-                    <h2>SERVICE INFORMATIQUE AUX ORGANISATIONS</h2>
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="images/logo.png" alt="Logo Lycée Saint-Louis" class="logo-img">
                 </div>
-                <div class="header-right">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ESAiNT%3C/text%3E%3Ctext x='10' y='70' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ELOUiS%3C/text%3E%3Ctext x='10' y='95' font-family='Arial' font-size='16' fill='%23003366'%3ECHÂTEAULIN%3C/text%3E%3Ccircle cx='95' cy='35' r='3' fill='%23ff6600'/%3E%3Ccircle cx='65' cy='65' r='3' fill='%23ff6600'/%3E%3C/svg%3E" alt="Saint-Louis Châteaulin">
-                </div>
+
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li><a href="#presentation" class="nav-link">Présentation</a></li>
+                    <li><a href="#specialites" class="nav-link">Spécialités</a></li>
+                    <li><a href="#programme" class="nav-link">Programme</a></li>
+                    <li><a href="#debouches" class="nav-link">Débouchés</a></li>
+                    <li><a href="#poursuites" class="nav-link">Poursuites</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
             </div>
         </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#presentation">Présentation</a></li>
-            <li><a href="#tronc-commun">Tronc Commun</a></li>
-            <li><a href="#specialites">Spécialités</a></li>
-            <li><a href="#debouches">Débouchés</a></li>
-            <li><a href="#poursuites">Poursuites d'études</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
     </nav>
 
-    <!-- Intro Section -->
-    <section id="presentation" class="intro">
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section id="accueil" class="hero">
+        <div class="hero-overlay"></div>
         <div class="container">
-            <div class="intro-content">
-                <div class="intro-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23003366' width='200' height='200'/%3E%3Crect fill='%23004080' y='50' width='200' height='40'/%3E%3Crect fill='%23005090' y='100' width='200' height='40'/%3E%3Crect fill='%230060a0' y='150' width='200' height='40'/%3E%3C/svg%3E" alt="Bâtiment">
-                </div>
-                <div class="intro-text">
-                    <h3>Le BTS SIO forme en 2 ans des techniciens professionnels aux métiers du <strong>développement</strong>, du <strong>réseau</strong> et de la <strong>cybersécurité</strong>.</h3>
+            <div class="hero-content">
+                <h1 class="hero-title">BTS SIO</h1>
+                <p class="hero-subtitle">Services Informatiques aux Organisations</p>
+                <div class="hero-cta">
+                    <a href="#presentation" class="btn btn-primary">Découvrir la formation</a>
+                    <a href="#contact" class="btn btn-secondary">Nous contacter</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Tronc Commun -->
-    <section id="tronc-commun" class="tronc-commun">
-        <div class="container">
-            <div class="section-title">UN TRONC COMMUN</div>
-            <p style="font-size: 1.2rem; margin-top: 1rem;">Au premier semestre les étudiants découvrent les matières informatiques via un tronc commun :</p>
-            
-            <div class="modules-grid">
-                <div class="module-card">
-                    <h4>Algorithmie</h4>
-                    <ul>
-                        <li>Conception</li>
-                        <li>Fondamentaux</li>
-                    </ul>
-                </div>
-
-                <div class="module-card">
-                    <h4>Base de données</h4>
-                    <ul>
-                        <li>Conception</li>
-                        <li>SQL</li>
-                    </ul>
-                </div>
-
-                <div class="module-card">
-                    <h4>Système</h4>
-                    <ul>
-                        <li>Linux</li>
-                        <li>Powershell</li>
-                        <li>Serveurs</li>
-                    </ul>
-                </div>
-
-                <div class="module-card">
-                    <h4>Web</h4>
-                    <ul>
-                        <li>HTML - CSS</li>
-                        <li>PHP</li>
-                        <li>Javascript</li>
-                    </ul>
-                </div>
-
-                <div class="module-card">
-                    <h4>Cybersécurité</h4>
-                    <ul>
-                        <li>Hack mot de passe</li>
-                        <li>Phishing</li>
-                    </ul>
-                </div>
-
-                <div class="module-card">
-                    <h4>Anglais</h4>
-                    <ul>
-                        <li>Séjour en Angleterre</li>
-                    </ul>
-                </div>
-
-                <div class="module-card">
-                    <h4>Réseau</h4>
-                    <ul>
-                        <li>Conception</li>
-                        <li>Sécurisation</li>
-                        <li>Application</li>
-                    </ul>
-                </div>
-
-                <div class="module-card">
-                    <h4>Droit - Éco Management</h4>
-                    <ul>
-                        <li>Découverte des entreprises</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem; font-size: 1.3rem; font-weight: bold; color: #003366;">
-                ⬇️ Les étudiants se spécialisent au second semestre ⬇️
-            </div>
+        <div class="hero-scroll-indicator">
+            <span>Défiler</span>
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <!-- Spécialités -->
-    <section id="specialites" class="specialites">
+    <!-- ============================================
+         PRÉSENTATION
+         ============================================ -->
+    <section id="presentation" class="presentation section">
         <div class="container">
-            <div class="specialites-container">
-                <!-- SISR -->
-                <div class="specialite sisr">
-                    <h3>SPÉCIALITÉ - SISR</h3>
-                    <p>Solution d'Infrastructure, Système et Réseaux pour devenir un expert dans l'administration, la sécurisation et l'optimisation des infrastructures informatiques</p>
-                    <div class="tech-icons">
-                        <span style="color: #ff6600; font-size: 2rem;">🔧 CISCO</span>
-                        <span style="color: #ff6600; font-size: 2rem;">💻 Windows</span>
-                        <span style="color: #ff6600; font-size: 2rem;">🌐 Réseaux</span>
+            <div class="section-header">
+                <h2 class="section-title">Présentation du BTS SIO</h2>
+                <p class="section-subtitle">Une formation complète aux métiers de l'informatique</p>
+            </div>
+
+            <div class="presentation-content">
+                <div class="presentation-text">
+                    <p class="lead">
+                        Le <strong>BTS Services Informatiques aux Organisations (SIO)</strong> est un diplôme de niveau
+                        Bac+2
+                        qui forme des professionnels de l'informatique capables de répondre aux besoins des entreprises
+                        en matière de solutions informatiques.
+                    </p>
+
+                    <p>
+                        Cette formation polyvalente vous permet d'acquérir des compétences techniques solides et
+                        des connaissances approfondies dans le domaine de l'informatique, tout en développant
+                        votre capacité à travailler en équipe et à communiquer efficacement.
+                    </p>
+
+                    <div class="key-points">
+                        <div class="key-point">
+                            <div class="key-point-icon">🎓</div>
+                            <div class="key-point-content">
+                                <h3>Diplôme reconnu</h3>
+                                <p>Bac+2 reconnu par l'État</p>
+                            </div>
+                        </div>
+
+                        <div class="key-point">
+                            <div class="key-point-icon">💼</div>
+                            <div class="key-point-content">
+                                <h3>Stages en entreprise</h3>
+                                <p>10 semaines de stage sur 2 ans</p>
+                            </div>
+                        </div>
+
+                        <div class="key-point">
+                            <div class="key-point-icon">🚀</div>
+                            <div class="key-point-content">
+                                <h3>Insertion professionnelle</h3>
+                                <p>Excellent taux d'emploi</p>
+                            </div>
+                        </div>
+
+                        <div class="key-point">
+                            <div class="key-point-icon">📚</div>
+                            <div class="key-point-content">
+                                <h3>Poursuites d'études</h3>
+                                <p>Licences pro, écoles d'ingénieurs...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- SLAM -->
-                <div class="specialite slam">
-                    <h3>SPÉCIALITÉ - SLAM</h3>
-                    <p>Solutions Logicielles et Applications Métiers pour devenir un développeur capable de concevoir des applications web/mobile, bases de données et logiciels.</p>
-                    <div class="tech-icons">
-                        <span style="color: #ff6600; font-size: 2rem;">📱 Android</span>
-                        <span style="color: #ff6600; font-size: 2rem;">🐘 PHP</span>
-                        <span style="color: #ff6600; font-size: 2rem;">☕ Java</span>
-                    </div>
+                <div class="presentation-image">
+                    <img src="images/presentation.jpg" alt="Étudiants en BTS SIO">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Débouchés -->
-    <section id="debouches" class="debouches">
-        <div class="container">
-            <div class="section-title">UNE FORMATION D'AVENIR</div>
-            
-            <div class="debouches-grid">
-                <div class="debouche-column">
-                    <h4>Pour les SLAM</h4>
-                    <ul>
-                        <li>Analyste programmeur</li>
-                        <li>Développeur web / logiciel / application</li>
-                        <li>Chef de projet</li>
-                        <li>...</li>
-                    </ul>
-                </div>
-
-                <div class="debouche-column">
-                    <h4>Pour les SISR</h4>
-                    <ul>
-                        <li>Administrateur système, réseau et sécurité</li>
-                        <li>Technicien support informatique</li>
-                        <li>Hackeur éthique</li>
-                        <li>...</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Poursuites d'études -->
-    <section id="poursuites" class="poursuites">
-        <div class="container">
-            <div class="section-title">ET APRÈS LE BTS ?</div>
-            
-            <div class="poursuites-grid">
-                <div class="poursuite-card">
-                    <h4>BAC +3</h4>
-                    <ul>
-                        <li>Licences professionnelles</li>
-                        <li>Licences informatiques (intégration en L3)</li>
-                    </ul>
-                </div>
-
-                <div class="poursuite-card">
-                    <h4>BAC +5</h4>
-                    <ul>
-                        <li>Master informatique / réseaux / cybersécurité</li>
-                        <li>Écoles d'ingénieurs (intégration en 1ère année)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stages -->
-    <section class="stages">
-        <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">STAGES EN ENTREPRISE</h2>
-            <div class="stages-info">
-                <div class="stage-item">4 SEMAINES DE STAGE EN 1ÈRE ANNÉE</div>
-                <div class="stage-item">6 SEMAINES DE STAGE EN 2ÈME ANNÉE</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
+    <!-- ============================================
+         STATISTIQUES
+         ============================================ -->
     <section class="stats">
         <div class="container">
-            <h3>80%</h3>
-            <p>DES ÉTUDIANTS CONTINUENT LES ÉTUDES</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">85</div>
+                    <div class="stat-label">% de réussite</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">95</div>
+                    <div class="stat-label">% d'insertion</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">semaines de stage</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">spécialités</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
+    <!-- ============================================
+         SPÉCIALITÉS
+         ============================================ -->
+    <section id="specialites" class="specialites section">
         <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>NOUS CONTACTER</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <strong>📞 Téléphone :</strong><br>
-                            02 98 86 59 00
-                        </div>
-                        <div class="contact-item">
-                            <strong>🌐 Site web :</strong><br>
-                            saint-louis29.net/nos-formations/
-                        </div>
-                        <div class="contact-item">
-                            <strong>📍 Adresse :</strong><br>
-                            Lycée Saint-Louis<br>
-                            Châteaulin, Finistère (29)
+            <div class="section-header">
+                <h2 class="section-title">Les deux spécialités du BTS SIO</h2>
+                <p class="section-subtitle">Choisissez votre voie dès la fin de la première année</p>
+            </div>
+
+            <div class="specialites-grid">
+                <!-- SLAM -->
+                <div class="specialite specialite-slam">
+                    <div class="specialite-header">
+                        <div class="specialite-icon">💻</div>
+                        <h3 class="specialite-title">SLAM</h3>
+                        <p class="specialite-subtitle">Solutions Logicielles et Applications Métiers</p>
+                    </div>
+
+                    <div class="specialite-body">
+                        <p class="specialite-description">
+                            La spécialité SLAM forme des développeurs capables de concevoir, développer et maintenir
+                            des applications informatiques.
+                        </p>
+
+                        <h4>Compétences développées :</h4>
+                        <ul class="specialite-list">
+                            <li>Développement d'applications (web, mobile, desktop)</li>
+                            <li>Programmation orientée objet</li>
+                            <li>Gestion de bases de données</li>
+                            <li>Conception et modélisation (UML, Merise)</li>
+                            <li>Développement web front-end et back-end</li>
+                            <li>Tests et débogage d'applications</li>
+                        </ul>
+
+                        <h4>Technologies étudiées :</h4>
+                        <div class="techno-tags">
+                            <span class="techno-tag">HTML/CSS</span>
+                            <span class="techno-tag">JavaScript</span>
+                            <span class="techno-tag">PHP</span>
+                            <span class="techno-tag">Python</span>
+                            <span class="techno-tag">Java</span>
+                            <span class="techno-tag">SQL</span>
+                            <span class="techno-tag">Node.js</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="lycee-info">
-                    <h4>LE LYCÉE SAINT-LOUIS</h4>
-                    <div class="lycee-features">
-                        <div class="feature">Effectifs réduits</div>
-                        <div class="feature">Un internat</div>
-                        <div class="feature">Suivi scolaire individualisé</div>
+                <!-- SISR -->
+                <div class="specialite specialite-sisr">
+                    <div class="specialite-header">
+                        <div class="specialite-icon">🌐</div>
+                        <h3 class="specialite-title">SISR</h3>
+                        <p class="specialite-subtitle">Solutions d'Infrastructure, Systèmes et Réseaux</p>
                     </div>
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ESAiNT%3C/text%3E%3Ctext x='10' y='70' font-family='Arial' font-size='35' font-weight='bold' fill='%23003366'%3ELOUiS%3C/text%3E%3Ctext x='10' y='95' font-family='Arial' font-size='16' fill='%23003366'%3ECHÂTEAULIN%3C/text%3E%3Ccircle cx='95' cy='35' r='3' fill='%23ff6600'/%3E%3Ccircle cx='65' cy='65' r='3' fill='%23ff6600'/%3E%3C/svg%3E" alt="Saint-Louis" style="width: 200px;">
+
+                    <div class="specialite-body">
+                        <p class="specialite-description">
+                            La spécialité SISR forme des techniciens capables d'installer, configurer et maintenir
+                            les infrastructures informatiques.
+                        </p>
+
+                        <h4>Compétences développées :</h4>
+                        <ul class="specialite-list">
+                            <li>Administration systèmes (Windows, Linux)</li>
+                            <li>Configuration et gestion de réseaux</li>
+                            <li>Virtualisation et cloud computing</li>
+                            <li>Sécurité informatique</li>
+                            <li>Support et assistance aux utilisateurs</li>
+                            <li>Sauvegarde et restauration de données</li>
+                        </ul>
+
+                        <h4>Technologies étudiées :</h4>
+                        <div class="techno-tags">
+                            <span class="techno-tag">Windows Server</span>
+                            <span class="techno-tag">Linux</span>
+                            <span class="techno-tag">VMware</span>
+                            <span class="techno-tag">Active Directory</span>
+                            <span class="techno-tag">Cisco</span>
+                            <span class="techno-tag">TCP/IP</span>
+                            <span class="techno-tag">Firewall</span>
+                            <span class="techno-tag">VPN</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- ============================================
+         PROGRAMME
+         ============================================ -->
+    <section id="programme" class="programme section section-gray">
         <div class="container">
-            <p>&copy; 2024 BTS SIO - Lycée Saint-Louis Châteaulin. Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">BTS Contrôlé par l'État</p>
+            <div class="section-header">
+                <h2 class="section-title">Programme de formation</h2>
+                <p class="section-subtitle">Un cursus complet sur 2 ans</p>
+            </div>
+
+            <div class="programme-content">
+                <div class="programme-intro">
+                    <p>
+                        Le BTS SIO se déroule sur <strong>2 années</strong> et comprend des enseignements
+                        généraux et professionnels, complétés par des stages en entreprise.
+                    </p>
+                </div>
+
+                <div class="modules-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">📘</div>
+                            <h3 class="module-title">Support et mise à disposition de services informatiques</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Gestion du patrimoine informatique</li>
+                                <li>Réponse aux incidents et aux demandes d'assistance</li>
+                                <li>Développement de la présence en ligne</li>
+                                <li>Travail en mode projet</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 SLAM -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">💻</div>
+                            <h3 class="module-title">Conception et développement (SLAM)</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Conception et développement d'applications</li>
+                                <li>Maintenance des applications</li>
+                                <li>Gestion des données</li>
+                                <li>Programmation objet</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 SISR -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">🌐</div>
+                            <h3 class="module-title">Administration des systèmes (SISR)</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Exploitation des services informatiques</li>
+                                <li>Administration des systèmes</li>
+                                <li>Administration des réseaux</li>
+                                <li>Sécurité des infrastructures</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">🔒</div>
+                            <h3 class="module-title">Cybersécurité</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Protection des données</li>
+                                <li>Sécurité des systèmes et réseaux</li>
+                                <li>Gestion des risques</li>
+                                <li>Conformité légale (RGPD)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">📊</div>
+                            <h3 class="module-title">Culture générale et expression</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Expression écrite et orale</li>
+                                <li>Synthèse de documents</li>
+                                <li>Communication professionnelle</li>
+                                <li>Veille technologique</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">🌍</div>
+                            <h3 class="module-title">Anglais</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Anglais technique</li>
+                                <li>Communication professionnelle</li>
+                                <li>Documentation technique</li>
+                                <li>Compréhension orale et écrite</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">🧮</div>
+                            <h3 class="module-title">Mathématiques appliquées</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Algorithmique</li>
+                                <li>Statistiques</li>
+                                <li>Probabilités</li>
+                                <li>Mathématiques pour l'informatique</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 7 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">⚖️</div>
+                            <h3 class="module-title">Culture juridique et économique</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li>Droit du numérique</li>
+                                <li>Économie de l'entreprise</li>
+                                <li>Propriété intellectuelle</li>
+                                <li>Contrats informatiques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="horaires-section">
+                    <h3>Répartition horaire hebdomadaire</h3>
+                    <div class="horaires-grid">
+                        <div class="horaire-item">
+                            <span class="horaire-matiere">Enseignements professionnels</span>
+                            <span class="horaire-heures">18h</span>
+                        </div>
+                        <div class="horaire-item">
+                            <span class="horaire-matiere">Culture générale et expression</span>
+                            <span class="horaire-heures">2h</span>
+                        </div>
+                        <div class="horaire-item">
+                            <span class="horaire-matiere">Anglais</span>
+                            <span class="horaire-heures">2h</span>
+                        </div>
+                        <div class="horaire-item">
+                            <span class="horaire-matiere">Mathématiques</span>
+                            <span class="horaire-heures">3h</span>
+                        </div>
+                        <div class="horaire-item">
+                            <span class="horaire-matiere">Culture juridique et économique</span>
+                            <span class="horaire-heures">2h</span>
+                        </div>
+                        <div class="horaire-item horaire-total">
+                            <span class="horaire-matiere"><strong>Total</strong></span>
+                            <span class="horaire-heures"><strong>27h</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         DÉBOUCHÉS
+         ============================================ -->
+    <section id="debouches" class="debouches section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Débouchés professionnels</h2>
+                <p class="section-subtitle">De nombreuses opportunités de carrière</p>
+            </div>
+
+            <div class="debouches-intro">
+                <p>
+                    Le BTS SIO offre de nombreuses possibilités d'insertion professionnelle dans des secteurs variés.
+                    Voici les principaux métiers accessibles selon la spécialité choisie :
+                </p>
+            </div>
+
+            <div class="debouches-columns">
+                <!-- SLAM -->
+                <div class="debouches-column">
+                    <h3 class="debouches-column-title">
+                        <span class="column-icon">💻</span>
+                        Métiers SLAM
+                    </h3>
+
+                    <div class="debouche-card">
+                        <h4>Développeur d'applications</h4>
+                        <p>Conception et développement de logiciels et applications web/mobile</p>
+                        <span class="salary">Salaire : 28k - 35k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Développeur web</h4>
+                        <p>Création de sites internet et applications web</p>
+                        <span class="salary">Salaire : 26k - 33k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Développeur full stack</h4>
+                        <p>Développement front-end et back-end d'applications</p>
+                        <span class="salary">Salaire : 30k - 38k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Analyste programmeur</h4>
+                        <p>Analyse des besoins et programmation de solutions</p>
+                        <span class="salary">Salaire : 27k - 34k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Technicien d'études informatiques</h4>
+                        <p>Étude et développement de solutions informatiques</p>
+                        <span class="salary">Salaire : 25k - 32k €/an</span>
+                    </div>
+                </div>
+
+                <!-- SISR -->
+                <div class="debouches-column">
+                    <h3 class="debouches-column-title">
+                        <span class="column-icon">🌐</span>
+                        Métiers SISR
+                    </h3>
+
+                    <div class="debouche-card">
+                        <h4>Administrateur systèmes et réseaux</h4>
+                        <p>Gestion et maintenance des infrastructures IT</p>
+                        <span class="salary">Salaire : 28k - 36k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Technicien réseaux</h4>
+                        <p>Installation et maintenance des équipements réseau</p>
+                        <span class="salary">Salaire : 26k - 33k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Technicien support informatique</h4>
+                        <p>Assistance technique aux utilisateurs</p>
+                        <span class="salary">Salaire : 24k - 30k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Administrateur sécurité</h4>
+                        <p>Sécurisation des systèmes d'information</p>
+                        <span class="salary">Salaire : 30k - 38k €/an</span>
+                    </div>
+
+                    <div class="debouche-card">
+                        <h4>Technicien cloud</h4>
+                        <p>Gestion d'infrastructures cloud</p>
+                        <span class="salary">Salaire : 28k - 35k €/an</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="secteurs-activite">
+                <h3>Secteurs d'activité</h3>
+                <div class="secteurs-grid">
+                    <div class="secteur-item">
+                        <div class="secteur-icon">🏢</div>
+                        <span>ESN / SSII</span>
+                    </div>
+                    <div class="secteur-item">
+                        <div class="secteur-icon">🏭</div>
+                        <span>Entreprises industrielles</span>
+                    </div>
+                    <div class="secteur-item">
+                        <div class="secteur-icon">🏪</div>
+                        <span>Grande distribution</span>
+                    </div>
+                    <div class="secteur-item">
+                        <div class="secteur-icon">🏦</div>
+                        <span>Banques et assurances</span>
+                    </div>
+                    <div class="secteur-item">
+                        <div class="secteur-icon">🏥</div>
+                        <span>Santé</span>
+                    </div>
+                    <div class="secteur-item">
+                        <div class="secteur-icon">🏛️</div>
+                        <span>Administration publique</span>
+                    </div>
+                    <div class="secteur-item">
+                        <div class="secteur-icon">🎓</div>
+                        <span>Éducation</span>
+                    </div>
+                    <div class="secteur-item">
+                        <div class="secteur-icon">📱</div>
+                        <span>Startups</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         POURSUITES D'ÉTUDES
+         ============================================ -->
+    <section id="poursuites" class="poursuites section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Poursuites d'études</h2>
+                <p class="section-subtitle">Continuez votre formation après le BTS SIO</p>
+            </div>
+
+            <div class="poursuites-intro">
+                <p>
+                    Le BTS SIO permet une insertion professionnelle immédiate, mais vous pouvez également
+                    poursuivre vos études pour vous spécialiser davantage ou obtenir un niveau Bac+3/+5.
+                </p>
+            </div>
+
+            <div class="poursuites-grid">
+                <!-- Licence Pro -->
+                <div class="poursuite-card">
+                    <div class="poursuite-header">
+                        <div class="poursuite-level">Bac+3</div>
+                        <h3>Licence Professionnelle</h3>
+                    </div>
+                    <div class="poursuite-body">
+                        <p class="poursuite-description">
+                            Spécialisez-vous dans un domaine précis de l'informatique
+                        </p>
+                        <ul class="poursuite-examples">
+                            <li>Licence Pro Développement Web et Mobile</li>
+                            <li>Licence Pro Administration et Sécurité des Réseaux</li>
+                            <li>Licence Pro DevOps</li>
+                            <li>Licence Pro Cybersécurité</li>
+                            <li>Licence Pro Systèmes d'Information</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bachelor -->
+                <div class="poursuite-card">
+                    <div class="poursuite-header">
+                        <div class="poursuite-level">Bac+3</div>
+                        <h3>Bachelor Informatique</h3>
+                    </div>
+                    <div class="poursuite-body">
+                        <p class="poursuite-description">
+                            Formation généraliste ou spécialisée en école privée
+                        </p>
+                        <ul class="poursuite-examples">
+                            <li>Bachelor Développeur d'Applications</li>
+                            <li>Bachelor Expert Cybersécurité</li>
+                            <li>Bachelor Chef de Projet Digital</li>
+                            <li>Bachelor Administrateur Systèmes et Réseaux</li>
+                            <li>Bachelor Data Analyst</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- École d'ingénieurs -->
+                <div class="poursuite-card">
+                    <div class="poursuite-header">
+                        <div class="poursuite-level">Bac+5</div>
+                        <h3>École d'Ingénieurs</h3>
+                    </div>
+                    <div class="poursuite-body">
+                        <p class="poursuite-description">
+                            Intégrez une école d'ingénieurs via les admissions parallèles
+                        </p>
+                        <ul class="poursuite-examples">
+                            <li>ESIEE</li>
+                            <li>EPITA (admissions parallèles)</li>
+                            <li>ESGI</li>
+                            <li>Autres écoles en convention</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Master -->
+                <div class="poursuite-card">
+                    <div class="poursuite-header">
+                        <div class="poursuite-level">Bac+5</div>
+                        <h3>Master Informatique</h3>
+                    </div>
+                    <div class="poursuite-body">
+                        <p class="poursuite-description">
+                            Poursuivez à l'université après une Licence
+                        </p>
+                        <ul class="poursuite-examples">
+                            <li>Master Informatique parcours MIAGE</li>
+                            <li>Master Cybersécurité</li>
+                            <li>Master Systèmes Intelligents</li>
+                            <li>Master Big Data</li>
+                            <li>Master Architecture Logicielle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT
+         ============================================ -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contactez-nous</h2>
+                <p class="section-subtitle">Une question ? Besoin d'informations ?</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Informations -->
+                <div class="contact-info">
+                    <h3>Lycée Saint-Louis</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p>63 Grand Rue, 29150 Châteaulin<br>29150 Châteaulin</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p><a href="tel:0298865900">02 98 86 59 00</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:saint-louis29@saint-louis29.net">saint-louis29@saint-louis29.net</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h4>Horaires</h4>
+                            <p>Lundi - Vendredi : 8h - 16h<br>Samedi : 8h - 12h</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.497248122764!2d-4.088062723273804!3d48.19703744701922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48113199d669b5df%3A0x8926e4b28e0f27da!2sColl%C3%A8ge%20Lyc%C3%A9e%20BTS%20-%20Saint-Louis!5e0!3m2!1sfr!2sfr!4v1767774660033!5m2!1sfr!2sfr"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- Formulaire -->
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sujet">Sujet *</label>
+                            <select id="sujet" name="sujet" required>
+                                <option value="">Choisissez un sujet</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="inscription">Inscription</option>
+                                <option value="visite">Visite du lycée</option>
+                                <option value="stage">Stage en entreprise</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Envoyer le message
+                            </button>
+                        </div>
+
+                        <p class="form-note">* Champs obligatoires</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BTS SIO</h4>
+                    <p>Services Informatiques aux Organisations</p>
+                    <p>Lycée Saint-Louis - Châteaulin</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#presentation">Présentation</a></li>
+                        <li><a href="#specialites">Spécialités</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Informations</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Plan du site</a></li>
+                        <li><a href="#">Accessibilité</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/bts-saint-louis-ch%C3%A2teaulin/"
+                            aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lycée Saint-Louis Châteaulin. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling pour les liens d'ancrage
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 
-        // Animation au scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.module-card, .specialite, .poursuite-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
 </body>
+
 </html>
