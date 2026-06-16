@@ -859,6 +859,25 @@ class App {
     }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const refuseBtn = document.getElementById("decline-cookies");
+
+    // Vérifie si un choix a déjà été fait
+    if (!localStorage.getItem("cookieConsent")) {
+        banner.style.display = "block";
+    }
+
+    acceptBtn.addEventListener("click", function () {
+        banner.style.display = "none";
+    });
+
+    refuseBtn.addEventListener("click", function () {
+        banner.style.display = "none";
+    });
+});
+
 /* ============================================
    DÉMARRAGE DE L'APPLICATION
    ============================================ */
@@ -894,3 +913,75 @@ window.BTS_SIO = {
 
 console.log('%c🎓 BTS SIO - Lycée Saint-Louis', 'font-size: 20px; font-weight: bold; color: #2563eb;');
 console.log('%cVersion: ' + window.BTS_SIO.version, 'color: #10b981;');
+
+
+
+
+/* ============================================
+   CARROUSSEL
+   ============================================ */
+   document.addEventListener('DOMContentLoaded', function () {
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-control.prev'); // ✅ était .carousel-button
+    const nextBtn = document.querySelector('.carousel-control.next'); // ✅ était .carousel-button
+    const indicatorBtns = document.querySelectorAll('.indicator');
+
+    const cols = 3;
+    const total = slides.length;
+    let currentIndex = 0;
+    let autoTimer;
+
+    // ✅ Duplication des slides pour la boucle infinie
+    [...slides].forEach(slide => {
+        track.appendChild(slide.cloneNode(true));
+        track.insertBefore(slide.cloneNode(true), track.firstChild);
+    });
+
+    function getSlideWidth() {
+        return track.querySelector('.carousel-slide').offsetWidth + 12; // 12 = gap
+    }
+
+    function updateTrack(animate = true) {
+        const offset = (total + currentIndex) * getSlideWidth();
+        track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+        track.style.transform = `translateX(-${offset}px)`;
+
+        indicatorBtns.forEach((btn, i) => {
+            btn.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function goTo(index) {
+        currentIndex = ((index % total) + total) % total;
+        updateTrack(true);
+    }
+
+    function next() { goTo(currentIndex + 1); }
+    function prev() { goTo(currentIndex - 1); }
+
+    // ✅ Défilement automatique
+    function startAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(next, 3000);
+    }
+
+    prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+    nextBtn.addEventListener('click', () => { next(); startAuto(); });
+
+    // ✅ Boucle infinie sans saut visible
+    track.addEventListener('transitionend', () => {
+        if (currentIndex === 0 || currentIndex === total - 1) {
+            updateTrack(false);
+        }
+    });
+
+    indicatorBtns.forEach((btn, i) => {
+        btn.addEventListener('click', () => { goTo(i); startAuto(); });
+    });
+
+    window.addEventListener('resize', () => updateTrack(false));
+
+    updateTrack(false);
+    startAuto();
+});
