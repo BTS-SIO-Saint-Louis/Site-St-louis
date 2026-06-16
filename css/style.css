@@ -1598,3 +1598,139 @@ nav.scrolled {
     outline: 3px solid var(--primary-color);
     outline-offset: 2px;
 }
+
+/* ============================================
+   MENTIONS LÉGALES
+   ============================================ */
+
+.text-content {
+    font-size: 1.125rem; /* ~18px */
+    line-height: 1.2;
+    color: var(--dark-light);
+}
+
+
+
+/* ============================================
+   TABLEAU CONTACT
+   ============================================ */
+
+/* Section Contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    min-width: 24px;
+}
+
+.contact-details h4 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.contact-details p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.contact-map {
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-items {
+        grid-template-columns: 1fr;
+    }
+    .contact-map {
+        height: 250px;
+        margin-top: 1.5rem;
+    }
+}
+/* ============================================
+  CARROUSEL 
+   ============================================ */
+/* Carrousel 3 colonnes */
+.carousel-3cols {
+    position: relative;
+    overflow: hidden;
+}
+.carousel-track {
+    display: flex;
+    gap: 12px;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+.carousel-slide {
+    flex: 0 0 calc(33.333% - 8px);
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 10;
+}
+.carousel-control.prev { left: 8px; }
+.carousel-control.next { right: 8px; }
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 12px;
+}
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.indicator.active { background: #555; }
