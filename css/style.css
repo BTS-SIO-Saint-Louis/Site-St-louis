@@ -1734,3 +1734,110 @@ nav.scrolled {
     padding: 0;
 }
 .indicator.active { background: #555; }
+
+
+/* ============================================
+   MENTIONS LÉGALES
+   ============================================ */
+
+/* Espacement pour ne pas être caché par la navigation fixe */
+#mentions-legales {
+    padding-top: 70px; 
+    padding-bottom: var(--spacing-xl);
+}
+
+/* Restreindre la largeur pour un confort de lecture optimal (environ 70-80 caractères par ligne) */
+#mentions-legales .section:not(.section-gray) {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--container-padding);
+}
+
+/* Hiérarchisation des titres */
+#mentions-legales h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--gray-light);
+    padding-bottom: 0.5rem;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.75rem;
+}
+
+#mentions-legales h3 {
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Confort de lecture du texte */
+#mentions-legales p,
+#mentions-legales li {
+    color: var(--dark-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 1.0625rem;
+}
+
+/* Style des listes */
+#mentions-legales ul {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#mentions-legales ul li {
+    padding-left: 0.5rem;
+}
+
+#mentions-legales ul li::marker {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* Stylisation de l'encart mis en évidence (.highlight) */
+#mentions-legales .highlight {
+    background-color: var(--gray-lighter);
+    padding: 1.5rem 2rem;
+    border-left: 4px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-lg) 0;
+    box-shadow: var(--shadow-sm);
+}
+
+#mentions-legales .highlight h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+#mentions-legales .highlight p:last-child {
+    margin-bottom: 0;
+}
+
+/* Stylisation de la zone de contact en bas de page */
+#mentions-legales .contact-info {
+    background-color: var(--gray-lighter);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-light);
+    margin-top: var(--spacing-sm);
+    text-align: center;
+}
+
+#mentions-legales .contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+/* Amélioration des liens dans le texte */
+#mentions-legales a {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    transition: text-decoration-color var(--transition-fast), color var(--transition-fast);
+}
+
+#mentions-legales a:hover {
+    color: var(--primary-dark);
+    text-decoration-color: var(--primary-dark);
+}
